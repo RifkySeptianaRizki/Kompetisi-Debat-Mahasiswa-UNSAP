@@ -1,0 +1,189 @@
+/* Impor font 'Anton' dan 'Poppins' dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    /* Transparansi disesuaikan agar gambar latar lebih terlihat */
+    --bg-gradient-start: rgba(255, 153, 51, 0.4);
+    --bg-gradient-end: rgba(60, 29, 0, 0.6);
+    --timer-color: #FFFFFF;
+    --text-color: #f0f0f0;
+    --accent-orange: #ff9933;
+    --accent-red: #d90429;
+}
+
+body {
+    background-image: 
+        radial-gradient(circle, var(--bg-gradient-start), var(--bg-gradient-end)),
+        url('background-debat.png');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Anton', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 30px 60px;
+    text-align: center;
+    min-width: 550px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.timer-display {
+    font-size: 18vw;
+    font-weight: 400;
+    color: var(--timer-color);
+    line-height: 1;
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 2.5px var(--accent-orange);
+    text-stroke: 2.5px var(--accent-orange);
+}
+
+#interrupt-info {
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 600;
+    font-size: 1.8vw;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    opacity: 0.9; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.timer-display-small {
+    font-size: 8vw;
+    color: var(--accent-orange);
+    margin-top: 0;
+    opacity: 1;
+    text-align: center;
+    -webkit-text-stroke: 1.5px white;
+    text-stroke: 1.5px white;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+/* ======================================= */
+/* === GAYA BARU UNTUK SEMUA TOMBOL === */
+/* ======================================= */
+
+.controls {
+    margin-top: 30px; 
+    display: none; /* Tombol disembunyikan secara default (untuk desktop) */
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.secondary-controls {
+    margin-top: 15px;
+    width: 100%;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(-1px);
+    filter: brightness(0.9);
+}
+
+#start-main {
+    background-color: var(--accent-orange);
+    border-color: var(--accent-orange);
+    color: #1a140f;
+}
+#start-main:hover {
+    box-shadow: 0 6px 25px rgba(255, 153, 51, 0.5);
+}
+
+#reset-all {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+}
+#reset-all:hover {
+    background-color: var(--accent-red);
+    color: white;
+    box-shadow: 0 6px 25px rgba(217, 4, 41, 0.5);
+}
+
+#pause-all:hover, #start-interrupt:hover {
+    border-color: var(--text-color);
+}
+
+.secondary-controls button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+}
+
+
+/* ================================================= */
+/* === ATURAN RESPONSIVE UNTUK LAYAR HANDPHONE === */
+/* ================================================= */
+@media (max-width: 600px) {
+
+    .timer-container {
+        min-width: 0;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .timer-display {
+        font-size: 30vw;
+    }
+    
+    #interrupt-info {
+        font-size: 5vw;
+    }
+
+    .timer-display-small {
+        font-size: 15vw;
+    }
+
+    /* Tampilkan kembali tombol di HP */
+    .controls {
+        display: flex;
+    }
+
+    /* Perbesar tombol agar mudah disentuh */
+    .controls button {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
